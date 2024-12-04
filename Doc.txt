@@ -1,0 +1,6 @@
+Tic-Tac-Toe Game with React
+
+Standard Rules:
+	1) 3 in line wins.
+	2) 2 player playing one by one.
+	3) Draw condition (the grid is full / no space for new moves.
