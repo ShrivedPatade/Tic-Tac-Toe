@@ -1,5 +1,3 @@
-# Tic-Tac-Toe: Player vs Player and Player vs Computer Modes
-
 # Unbeatable Tic-Tac-Toe AI with Alpha-Beta Pruning
 
 ![A GIF showing the AI making an optimal move to block the player.](link-to-your-demo.gif)
