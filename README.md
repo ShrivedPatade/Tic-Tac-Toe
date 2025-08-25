@@ -20,7 +20,7 @@ To make the decision-making process highly efficient, minimax is enhanced with *
 ## 🛠️ Tech Stack
 
 * **Core Algorithm:** JavaScript (for Minimax and Alpha-Beta Pruning logic)
-* **Interface:** HTML5 & CSS3
+* **Interface:** HTML5, CSS3, ReactJS & Tailwind CSS
 
 ## 🚀 Getting Started
 
