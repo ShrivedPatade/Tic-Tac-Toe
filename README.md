@@ -38,5 +38,4 @@ No installation is needed! You can test the AI by running the game directly in y
 
 ## 👀 Showcasing the Output
 
-To best demonstrate the AI, create a **GIF** showing a game where you try to set up a win, and the AI perfectly blocks you every time, eventually forcing a draw. This visually proves the effectiveness of the algorithm.
 **Happy Coding!** 🎮✨
