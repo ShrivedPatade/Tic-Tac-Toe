@@ -74,10 +74,10 @@ const PVP: React.FC = () => {
     return (
         <div className="App">
             <Message text={message} p1Message="Player One Wins!!" p2Message="Player Two Wins!!" />
-            <h2 className="container my-3" id={turn === 0 ? "player1" : "player2"}>
+            <h2 className="" id={turn === 0 ? "player1" : "player2"}>
                 {turn === 0 ? `Player One's Turn (${player1.code})` : `Player Two's Turn (${player2.code})`}
             </h2>
-            <div className="tic-tac-toe-grid my-5">
+            <div className="tic-tac-toe-grid">
                 {grid.map((row, rowIndex) =>
                     row.map((content, colIndex) => (
                         <Cell
@@ -88,7 +88,7 @@ const PVP: React.FC = () => {
                     ))
                 )}
             </div>
-            <Score p1Score={scores.player1} p2Score={scores.player2} isVsComputer={false} />
+            <Score scoreX={scores.player1} scoreO={scores.player2} />
         </div>
     );
 };

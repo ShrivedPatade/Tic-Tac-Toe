@@ -130,7 +130,7 @@ const PVC: React.FC = () => {
         <div className="App">
             <Message text={msg} p1Message="You Win !!" p2Message="Computer Wins !!" />
             <Grid turn={turn} playerCode={player.code} grid={grid} onCellClick={playerMove} />
-            <Score p1Score={scores.player} p2Score={scores.comp} isVsComputer={true} />
+            <Score scoreX={scores.player} scoreO={scores.comp} />
         </div>
     );
 };

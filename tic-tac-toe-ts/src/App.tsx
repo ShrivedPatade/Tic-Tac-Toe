@@ -8,16 +8,18 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <div id="root">
       <Header title="Tic-Tac-Toe" />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pvp" element={<PVP />} />
-          <Route path="/pvc" element={<PVC />} />
-        </Routes>
-      </Router>
-    </>
+      <main className="main-content">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pvp" element={<PVP />} />
+            <Route path="/pvc" element={<PVC />} />
+          </Routes>
+        </Router>
+      </main>
+    </div>
   );
 }
 

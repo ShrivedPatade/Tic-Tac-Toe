@@ -16,7 +16,7 @@ const Grid: React.FC<GridProps> = ({ grid, turn, playerCode, onCellClick }) => (
     ) : (
       <h2 className="container my-3" id="player2">Computer's move (O)</h2>
     )}
-    <div className="tic-tac-toe-grid my-5">
+    <div className="tic-tac-toe-grid">
       {grid.map((row, rowIndex) =>
         row.map((content, colIndex) => (
           <Cell
