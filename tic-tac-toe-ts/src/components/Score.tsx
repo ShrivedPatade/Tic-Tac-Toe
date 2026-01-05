@@ -4,26 +4,30 @@ interface ScoreProps {
   scoreX: number;
   scoreO: number;
   draws: number;
-  isXNext: boolean;
-  winner: string | null;
+  // isXNext is kept for the interface but not used for glowing here
+  isXNext: boolean; 
+  winner: string | null; 
 }
 
-const Score: React.FC<ScoreProps> = ({ scoreX, scoreO, draws, isXNext, winner }) => {
+const Score: React.FC<ScoreProps> = ({ scoreX, scoreO, draws, winner }) => {
   return (
-    <div className="grid grid-cols-3 gap-4 w-full max-w-md mb-8">
-      <div className={`p-4 rounded-2xl text-center transition-all duration-300 shadow-sm ${isXNext && !winner ? 'bg-orange-500 text-white scale-105 ring-4 ring-orange-100' : 'bg-white text-orange-600 border border-orange-100'}`}>
-        <div className="text-xs uppercase font-black tracking-widest opacity-70 mb-1">Player X</div>
-        <div className="text-3xl font-black">{scoreX}</div>
+    <div className="score-container">
+      {/* Player X glows if winner is 'X' */}
+      <div className={`score-card score-card-x ${winner === 'X' ? 'active' : ''}`}>
+        <div className="score-label">Player X</div>
+        <div className="score-value">{scoreX}</div>
       </div>
       
-      <div className="p-4 rounded-2xl text-center bg-white text-slate-600 shadow-sm border border-slate-100">
-        <div className="text-xs uppercase font-black tracking-widest opacity-70 mb-1">Draws</div>
-        <div className="text-3xl font-black">{draws}</div>
+      {/* Draws glows if winner is 'Draw' */}
+      <div className={`score-card score-card-draw ${winner === 'Draw' ? 'active' : ''}`}>
+        <div className="score-label">Draws</div>
+        <div className="score-value">{draws}</div>
       </div>
       
-      <div className={`p-4 rounded-2xl text-center transition-all duration-300 shadow-sm ${!isXNext && !winner ? 'bg-blue-500 text-white scale-105 ring-4 ring-blue-100' : 'bg-white text-blue-600 border border-blue-100'}`}>
-        <div className="text-xs uppercase font-black tracking-widest opacity-70 mb-1">Player O</div>
-        <div className="text-3xl font-black">{scoreO}</div>
+      {/* Player O glows if winner is 'O' */}
+      <div className={`score-card score-card-o ${winner === 'O' ? 'active' : ''}`}>
+        <div className="score-label">Player O</div>
+        <div className="score-value">{scoreO}</div>
       </div>
     </div>
   );

@@ -6,9 +6,10 @@ import type { GridState, PlayerCode } from '../types';
 
 const PVP: React.FC = () => {
     const [grid, setGrid] = useState<GridState>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
-    const [turn, setTurn] = useState(0); // 0 for Player 1, 1 for Player 2
+    const [turn, setTurn] = useState(0); 
     const [message, setMessage] = useState("...");
-    const [scores, setScores] = useState({ player1: 0, player2: 0 });
+    const [scores, setScores] = useState({ x: 0, o: 0, draws: 0 });
+    const [lastResult, setLastResult] = useState<string | null>(null);
     const [gameOver, setGameOver] = useState(false);
     const [nextStarter, setNextStarter] = useState(0);
 
@@ -51,20 +52,21 @@ const PVP: React.FC = () => {
 
         if (checkWinner(newGrid, currentPlayerCode)) {
             setGameOver(true);
-            if (turn === 0) {
-                setScores(s => ({ ...s, player1: s.player1 + 1 }));
+            if (turn === 0) { // Player 1 (O)
+                setScores(s => ({ ...s, o: s.o + 1 }));
+                setLastResult('O');
                 setMessage("p1w");
-                setNextStarter(0);
-            } else {
-                setScores(s => ({ ...s, player2: s.player2 + 1 }));
+            } else { // Player 2 (X)
+                setScores(s => ({ ...s, x: s.x + 1 }));
+                setLastResult('X');
                 setMessage("p2w");
-                setNextStarter(1);
             }
             setTimeout(resetGame, 1500);
         } else if (isDraw(newGrid)) {
             setGameOver(true);
+            setScores(s => ({ ...s, draws: s.draws + 1 }));
+            setLastResult('Draw');
             setMessage("d");
-            setNextStarter(prev => 1 - prev); // Alternate starter on draw
             setTimeout(resetGame, 1500);
         } else {
             setTurn(prev => 1 - prev);
@@ -88,7 +90,13 @@ const PVP: React.FC = () => {
                     ))
                 )}
             </div>
-            <Score scoreX={scores.player1} scoreO={scores.player2} />
+            <Score 
+                scoreX={scores.x} 
+                scoreO={scores.o} 
+                draws={scores.draws} 
+                isXNext={turn === 1}
+                winner={lastResult} 
+            />
         </div>
     );
 };

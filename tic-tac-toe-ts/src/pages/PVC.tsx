@@ -8,12 +8,12 @@ const PVC: React.FC = () => {
     const [grid, setGrid] = useState<GridState>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
     const [turn, setTurn] = useState(0);
     const [msg, setMsg] = useState("...");
-    const [scores, setScores] = useState({ player: 0, comp: 0 });
+    const [scores, setScores] = useState({ x: 0, o: 0, draws: 0 });
+    const [lastResult, setLastResult] = useState<string | null>(null);
     const [isGameOver, setGameOver] = useState(false);
 
     const player = { code: 'X' as PlayerCode };
     const comp = { code: 'O' as PlayerCode };
-
     const checkWinner = (board: GridState): PlayerCode | "Draw" | null => {
         const lines = [
             [[0, 0], [0, 1], [0, 2]], [[1, 0], [1, 1], [1, 2]], [[2, 0], [2, 1], [2, 2]],
@@ -41,19 +41,25 @@ const PVC: React.FC = () => {
         if (winner && !isGameOver) {
             setGameOver(true);
             if (winner === player.code) {
-                setScores(s => ({ ...s, player: s.player + 1 }));
+                setScores(s => ({ ...s, x: s.x + 1 }));
+                setLastResult('X'); // Update last winner
                 setMsg("p1w");
             } else if (winner === comp.code) {
-                setScores(s => ({ ...s, comp: s.comp + 1 }));
+                setScores(s => ({ ...s, o: s.o + 1 }));
+                setLastResult('O'); // Update last winner
                 setMsg("cw");
             } else {
+                setScores(s => ({ ...s, draws: s.draws + 1 }));
+                setLastResult('Draw'); // Update draw status
                 setMsg("d");
             }
+
             setTimeout(() => {
                 setGrid([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
                 setTurn(0);
                 setMsg("...");
                 setGameOver(false);
+                // Note: We do NOT reset lastResult here so the glow stays
             }, 1500);
         }
     }, [grid, isGameOver]);
@@ -130,7 +136,13 @@ const PVC: React.FC = () => {
         <div className="App">
             <Message text={msg} p1Message="You Win !!" p2Message="Computer Wins !!" />
             <Grid turn={turn} playerCode={player.code} grid={grid} onCellClick={playerMove} />
-            <Score scoreX={scores.player} scoreO={scores.comp} />
+            <Score 
+                scoreX={scores.x} 
+                scoreO={scores.o} 
+                draws={scores.draws} 
+                isXNext={turn === 0}
+                winner={lastResult} // Pass the persistent lastResult here
+            />
         </div>
     );
 };

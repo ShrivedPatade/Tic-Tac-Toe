@@ -106,8 +106,8 @@ body {
   grid-template-rows: repeat(3, 1fr);
   gap: 10px; 
   width: 300px; 
-  height: 300px; 
-  margin: 0 auto;
+  height: 300px;
+  margin-left: 4.5%; 
 }
 
 .win {
@@ -121,21 +121,21 @@ body {
 
 .tic-tac-toe-cell.x {
   font-size: 30px;
-  color: #ff6347; /* Red X */
+  color: #daa520; /* Red X */
 }
 
 .tic-tac-toe-cell.o {
   font-size: 30px;
-  color: #1e90ff; /* Blue O */
+  color: #008b8b; /* Blue O */
 }
 
 .tic-tac-toe-cell {
   width: 100px;
   height: 100px;
+  font-size: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
   background-color: white;
   border: none;
   border-radius: 12px;
@@ -171,4 +171,80 @@ body {
 }
 .hidden{
   opacity: 0;
+}
+
+/* Scoreboard Layout */
+.score-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 448px;
+  margin-top: 50px;
+}
+
+/* Base Card Style */
+.score-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Player X Styling */
+.score-card-x {
+  background-color: white;
+  color: #daa520;
+  border: 1px solid #ffedd5;
+}
+
+.score-card-x.active {
+  background-color: #daa520;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px #ffedd5;
+}
+
+/* Player O Styling */
+.score-card-o {
+  background-color: white;
+  color: #008b8b;
+  border: 1px solid #dbeafe;
+}
+
+.score-card-o.active {
+  background-color: #008b8b;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px #dbeafe;
+}
+
+/* Draws Styling */
+.score-card-draw {
+  background-color: white;
+  color: #475569;
+  border: 1px solid #f1f5f9;
+}
+
+.score-card-draw.active {
+  background-color: #64748b;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px #f1f5f9;
+}
+
+/* Text Styling within Cards */
+.score-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.score-value {
+  font-size: 1.875rem;
+  font-weight: 900;
 }
