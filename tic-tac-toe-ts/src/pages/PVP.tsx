@@ -18,6 +18,7 @@ const PVP: React.FC = () => {
 
     const resetGame = () => {
         setGrid([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
+        setNextStarter(1 - nextStarter);
         setTurn(nextStarter);
         setMessage("...");
         setGameOver(false);

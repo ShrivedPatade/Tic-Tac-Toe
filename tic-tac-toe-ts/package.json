@@ -6,9 +6,9 @@
   "homepage": "https://ShrivedPatade.github.io/Tic-Tac-Toe-TS",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
