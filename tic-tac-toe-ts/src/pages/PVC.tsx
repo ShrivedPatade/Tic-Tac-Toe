@@ -43,7 +43,8 @@ const PVC: React.FC = () => {
         if (winner && !isGameOver) {
             setGameOver(true);
             if (winner === player.code) {
-                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } }); // Celebration!
+                confetti({ particleCount: 150, spread: 70, origin: { x: 0, y: 1 }, angle: 45 });
+                confetti({ particleCount: 150, spread: 70, origin: { x: 1, y: 1 }, angle: 135 });
                 setScores(s => ({ ...s, x: s.x + 1 }));
                 setMsg("p1w");
             } else if (winner === comp.code) {

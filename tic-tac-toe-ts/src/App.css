@@ -204,12 +204,14 @@ body {
   color: #008b8b; 
   font-weight: bold; 
   margin-bottom: 1rem; 
+  transition: all 0.2s ease;
 }
 .player-x-text { 
   text-align: center;
   color: #daa520;
   font-weight: bold; 
   margin-bottom: 1rem; 
+  transition: all 0.2s ease;
 }
 
 #player1{

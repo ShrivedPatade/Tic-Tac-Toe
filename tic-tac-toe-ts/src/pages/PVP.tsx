@@ -45,7 +45,8 @@ const PVP: React.FC = () => {
 
         if (checkWinner(newGrid, currentPlayerCode)) {
             setGameOver(true);
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 150, spread: 70, origin: { x: 0, y: 1 }, angle: 45 });
+            confetti({ particleCount: 150, spread: 70, origin: { x: 1, y: 1 }, angle: 135 });
             
             if (turn === 0) {
                 setScores(s => ({ ...s, o: s.o + 1 }));
