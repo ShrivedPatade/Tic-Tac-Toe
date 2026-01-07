@@ -3,6 +3,7 @@ import Message from '../components/Message';
 import Score from '../components/Score';
 import Cell from '../components/Cell';
 import type { GridState, PlayerCode } from '../types';
+import confetti from 'canvas-confetti';
 
 const PVP: React.FC = () => {
     const [grid, setGrid] = useState<GridState>([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
@@ -34,6 +35,7 @@ const PVP: React.FC = () => {
         for (const condition of winConditions) {
             const [a, b, c] = condition;
             if (flatGrid[a] === code && flatGrid[b] === code && flatGrid[c] === code) {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } }); // Celebration!
                 return true;
             }
         }

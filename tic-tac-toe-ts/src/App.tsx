@@ -9,16 +9,16 @@ import './App.css';
 function App() {
   return (
     <div id="root">
-      <Header title="Tic-Tac-Toe" />
-      <main className="main-content">
-        <Router>
+      <Router>
+        <Header title="Tic-Tac-Toe" />
+        <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pvp" element={<PVP />} />
             <Route path="/pvc" element={<PVC />} />
           </Routes>
-        </Router>
-      </main>
+        </main>
+      </Router>
     </div>
   );
 }

@@ -26,6 +26,7 @@ body {
 }
 
 .navbar-brand {
+  position: relative;
   font-size: 1.8rem !important;
   color: white !important;
   margin: 0;
@@ -91,6 +92,37 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
+
+.back-btn {
+  position: absolute;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-3px);
+}
+
+/* AI Thinking Indicator */
+.thinking-indicator {
+  height: 24px;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-weight: 500;
+  font-style: italic;
+  transition: opacity 0.3s ease;
+}
+
+.thinking-indicator.hidden { opacity: 0; }
+.thinking-indicator.visible { opacity: 1; }
 
 /* Game Grid Styles (keeping your existing logic) */
 /* .tic-tac-toe-grid {

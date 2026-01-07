@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import Message from '../components/Message';
 import Grid from '../components/Grid';
 import Score from '../components/Score';
@@ -11,6 +12,7 @@ const PVC: React.FC = () => {
     const [scores, setScores] = useState({ x: 0, o: 0, draws: 0 });
     const [lastResult, setLastResult] = useState<string | null>(null);
     const [isGameOver, setGameOver] = useState(false);
+    const [isThinking, setIsThinking] = useState(false);
 
     const player = { code: 'X' as PlayerCode };
     const comp = { code: 'O' as PlayerCode };
@@ -41,8 +43,8 @@ const PVC: React.FC = () => {
         if (winner && !isGameOver) {
             setGameOver(true);
             if (winner === player.code) {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } }); // Celebration!
                 setScores(s => ({ ...s, x: s.x + 1 }));
-                setLastResult('X'); // Update last winner
                 setMsg("p1w");
             } else if (winner === comp.code) {
                 setScores(s => ({ ...s, o: s.o + 1 }));
@@ -66,6 +68,7 @@ const PVC: React.FC = () => {
 
     useEffect(() => {
         if (turn === 1 && !isGameOver) {
+            setIsThinking(true); // Show thinking indicator
             const timer = setTimeout(() => {
                 const move = bestMove(grid);
                 if (move) {
@@ -73,7 +76,8 @@ const PVC: React.FC = () => {
                     setGrid(newGrid);
                     setTurn(0);
                 }
-            }, 500);
+                setIsThinking(false);
+            }, 800); // Slightly longer delay for "thinking" feel
             return () => clearTimeout(timer);
         }
     }, [turn, grid, isGameOver]);
@@ -132,17 +136,20 @@ const PVC: React.FC = () => {
         return move;
     };
 
-    return (
-        <div className="App">
-            <Message text={msg} p1Message="You Win !!" p2Message="Computer Wins !!" />
-            <Grid turn={turn} playerCode={player.code} grid={grid} onCellClick={playerMove} />
-            <Score 
-                scoreX={scores.x} 
-                scoreO={scores.o} 
-                draws={scores.draws} 
-                isXNext={turn === 0}
-                winner={lastResult} // Pass the persistent lastResult here
-            />
+return (
+    <div className="App">
+        <Message text={msg} p1Message="You Win !!" p2Message="Computer Wins !!" />
+        <div className={`thinking-indicator ${isThinking ? 'visible' : 'hidden'}`}>
+            Computer is thinking...
+        </div>
+        <Grid turn={turn} playerCode={player.code} grid={grid} onCellClick={playerMove} />
+        <Score 
+            scoreX={scores.x} 
+            scoreO={scores.o} 
+            draws={scores.draws} 
+            isXNext={turn === 0}
+            winner={lastResult} // Pass the persistent lastResult here
+        />
         </div>
     );
 };
