@@ -15,23 +15,23 @@ const Home: React.FC = () => {
 
   return (
     <div className="choice">
-      {/* Column 1: PVP */}
-      <div className="mode-column">
-        <div className="image-wrapper">
-          <img src={pvpImage} alt="Player vs Player" className="mode-icon" />
-        </div>
-        <button type="button" className="btn bpvp" onClick={() => navigate('/pvp')}>
-          Player VS Player
-        </button>
-      </div>
-
-      {/* Column 2: PVC */}
+      {/* Column 1: PVC */}
       <div className="mode-column">
         <div className="image-wrapper">
           <img src={pvcImage} alt="Player vs Computer" className="mode-icon" />
         </div>
         <button type="button" className="btn bpvc" onClick={() => navigate('/pvc')}>
-          Player VS Computer (α-β)
+          Player vs Computer (α-β)
+        </button>
+      </div>
+
+      {/* Column 2: PVP */}
+      <div className="mode-column">
+        <div className="image-wrapper">
+          <img src={pvpImage} alt="Player vs Player" className="mode-icon" />
+        </div>
+        <button type="button" className="btn bpvp" onClick={() => navigate('/pvp')}>
+          Player vs Player
         </button>
       </div>
     </div>

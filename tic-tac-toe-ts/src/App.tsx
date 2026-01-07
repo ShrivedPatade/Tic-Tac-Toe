@@ -10,7 +10,7 @@ function App() {
   return (
     <div id="root">
       <Router>
-        <Header title="Tic-Tac-Toe" />
+        <Header title="α-β Pruning Tic-Tac-Toe" />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
