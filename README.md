@@ -20,11 +20,12 @@ To make the decision-making process highly efficient, minimax is enhanced with *
 ## 🛠️ Tech Stack
 
 * **Core Algorithm:** JavaScript (for Minimax and Alpha-Beta Pruning logic)
-* **Interface:** HTML5, CSS3, ReactJS & Tailwind CSS
+* **Interface:** HTML5, CSS3, TypeScript, ReactJS & Tailwind CSS
 
 ## 🚀 Getting Started
 
-No installation is needed! You can test the AI by running the game directly in your browser.
+You can test the AI by visiting the below link for the hosted app with gh-pages.
+https://shrivedpatade.github.io/Tic-Tac-Toe/
 
 1.  Clone the repository:
     ```bash
